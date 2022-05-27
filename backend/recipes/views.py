@@ -6,11 +6,11 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from users.serializers import RecipeForUserSerializer
 
-from .models import Ingredient, IngredientRecipe, Recipe, Tag
 from .filters import IngredientFilter, RecipeFilter
+from .models import Ingredient, IngredientRecipe, Recipe, Tag
 from .permissions import AuthPostAuthorChangesOrReadOnly
-from .serializers import (IngredientSerializer, TagSerializer,
-                          RecipeReadSerializer, RecipeWriteSerializer)
+from .serializers import (IngredientSerializer, RecipeReadSerializer,
+                          RecipeWriteSerializer, TagSerializer)
 from .services import add_or_del_obj
 
 

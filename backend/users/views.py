@@ -1,10 +1,9 @@
 from djoser.views import UserViewSet
+from recipes.services import add_or_del_obj
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
-from recipes.services import add_or_del_obj
 
 from .models import User
 from .serializers import UserAuthSerializer, UserSerializer
