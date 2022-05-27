@@ -1,5 +1,13 @@
 from django_filters.rest_framework import filters, FilterSet
-from .models import Recipe
+from .models import Ingredient, Recipe
+
+
+class IngredientFilter(FilterSet):
+    name = filters.CharFilter(field_name='name', lookup_expr='startswith')
+
+    class Meta:
+        model = Ingredient
+        fields = ('name',)
 
 
 class RecipeFilter(FilterSet):
