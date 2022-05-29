@@ -2,7 +2,7 @@
 
 [![CI/CD Foodgram](https://github.com/photometer/foodgram-project-react/workflows/CI%2FCD%20Foodgram/badge.svg)](https://github.com/photometer/foodgram-project-react/actions/workflows/foodgram_workflow.yml)
 
-Available at http://foodgram.ga/
+Available at https://foodgram.ga/
 
 ---
 
