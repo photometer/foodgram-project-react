@@ -18,19 +18,22 @@ class IngredientRecipe(admin.ModelAdmin):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'image', 'cooking_time', 'author',
-                    'ingredients_count', 'tags_count', 'favorites_count',
-                    'shopping_cart_count')
+    list_display = ('name', 'image', 'cooking_time', 'author', 'ingredients',
+                    'tags', 'favorites_count', 'shopping_cart_count')
     inlines = (IngredientInline,)
     empty_value_display = EMPTY
     list_filter = ('author', 'tags')
-    search_fields = ('name',)
+    search_fields = ('name', 'author__username', 'tag__name')
 
-    def ingredients_count(self, obj):
-        return obj.ingredients.count()
+    def ingredients(self, obj):
+        return ', '.join(list([
+            list(i.values())[0] for i in obj.ingredients.values('name')
+        ]))
 
-    def tags_count(self, obj):
-        return obj.tags.count()
+    def tags(self, obj):
+        return ', '.join(list([
+            list(i.values())[0] for i in obj.tags.values('name')
+        ]))
 
     def favorites_count(self, obj):
         return obj.favorites.count()
@@ -43,9 +46,11 @@ class RecipeAdmin(admin.ModelAdmin):
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'measurement_unit')
     empty_value_display = EMPTY
+    search_fields = ('name', 'measurement_unit')
 
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ('name', 'color', 'slug')
     empty_value_display = EMPTY
+    search_fields = ('name', 'color', 'slug')
