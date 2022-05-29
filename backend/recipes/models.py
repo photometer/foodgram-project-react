@@ -30,7 +30,7 @@ class Tag(models.Model):
                 message='Неверное значение HEX-кода'
             )
         ],
-        error_messages = {'validators': 'Неверное значение HEX-кода'}
+        error_messages={'validators': 'Неверное значение HEX-кода'}
     )
     slug = models.SlugField(max_length=50, unique=True)
 
@@ -79,7 +79,7 @@ class Recipe(models.Model):
                 limit_value=1, message='Введите значение больше 0!'
             )
         ],
-        error_messages = {'validators': 'Введите значение больше 0!'}
+        error_messages={'validators': 'Введите значение больше 0!'}
     )
     favorites = models.ManyToManyField(
         User,
@@ -122,7 +122,7 @@ class IngredientRecipe(models.Model):
                 limit_value=1, message='Введите значение больше 0!'
             )
         ],
-        error_messages = {'validators': 'Введите значение больше 0!'}
+        error_messages={'validators': 'Введите значение больше 0!'}
     )
 
     class Meta:
