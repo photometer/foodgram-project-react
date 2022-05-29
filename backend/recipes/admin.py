@@ -18,19 +18,19 @@ class IngredientRecipe(admin.ModelAdmin):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'image', 'cooking_time', 'author', 'ingredients',
-                    'tags', 'favorites_count', 'shopping_cart_count')
+    list_display = ('name', 'image', 'cooking_time', 'author', 'ingrs', 'tgs',
+                    'favorites_count', 'shopping_cart_count')
     inlines = (IngredientInline,)
     empty_value_display = EMPTY
     list_filter = ('author', 'tags')
     search_fields = ('name', 'author__username', 'tag__name')
 
-    def ingredients(self, obj):
+    def ingrs(self, obj):
         return ', '.join(list([
             list(i.values())[0] for i in obj.ingredients.values('name')
         ]))
 
-    def tags(self, obj):
+    def tgs(self, obj):
         return ', '.join(list([
             list(i.values())[0] for i in obj.tags.values('name')
         ]))
