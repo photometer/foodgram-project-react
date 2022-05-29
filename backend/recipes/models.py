@@ -2,6 +2,8 @@ from django.core import validators
 from django.db import models
 from users.models import User
 
+from .validators import validate_zero
+
 
 class Ingredient(models.Model):
     name = models.CharField(
@@ -30,7 +32,6 @@ class Tag(models.Model):
                 message='Неверное значение HEX-кода'
             )
         ],
-        error_messages={'ValidationError': 'Неверное значение HEX-кода'}
     )
     slug = models.SlugField(max_length=50, unique=True)
 
@@ -74,12 +75,7 @@ class Recipe(models.Model):
     cooking_time = models.PositiveSmallIntegerField(
         'Время приготовления в минутах',
         help_text='Время в минутах',
-        validators=[
-            validators.MinValueValidator(
-                limit_value=1, message='Введите значение больше 0!'
-            )
-        ],
-        error_messages={'ValidationError': 'Введите значение больше 0!'}
+        validators=[validate_zero],
     )
     favorites = models.ManyToManyField(
         User,
@@ -117,12 +113,7 @@ class IngredientRecipe(models.Model):
     )
     amount = models.PositiveSmallIntegerField(
         'Количество',
-        validators=[
-            validators.MinValueValidator(
-                limit_value=1, message='Введите значение больше 0!'
-            )
-        ],
-        error_messages={'ValidationError': 'Введите значение больше 0!'}
+        validators=[validate_zero],
     )
 
     class Meta:
