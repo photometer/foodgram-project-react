@@ -4,6 +4,7 @@ from rest_framework import serializers
 from users.serializers import UserAuthSerializer
 
 from .models import Ingredient, IngredientRecipe, Recipe, Tag
+from .validators import validate_zero
 
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -15,7 +16,9 @@ class IngredientSerializer(serializers.ModelSerializer):
 
 class IngredientRecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(write_only=True)
-    amount = serializers.IntegerField(write_only=True)
+    amount = serializers.IntegerField(
+        write_only=True, validators=[validate_zero]
+    )
 
     class Meta:
         model = IngredientRecipe
