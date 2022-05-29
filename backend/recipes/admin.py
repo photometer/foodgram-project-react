@@ -23,7 +23,7 @@ class RecipeAdmin(admin.ModelAdmin):
     inlines = (IngredientInline,)
     empty_value_display = EMPTY
     list_filter = ('author', 'tags')
-    search_fields = ('name', 'author__username', 'tag__name')
+    search_fields = ('name', 'author__username', 'tags__name', 'ingredients__name')
 
     def ingrs(self, obj):
         return ', '.join(list([
