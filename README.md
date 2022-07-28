@@ -20,6 +20,7 @@ password: admin
 
 - Python;
 - Django-Rest-Framework;
+- PostgreSQL;
 - Gunicorn;
 - Docker/Docker-compose;
 - Nginx;
