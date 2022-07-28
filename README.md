@@ -7,9 +7,9 @@ Available at https://foodgram.ga/
 ---
 
 <details>
-  <summary> Админка </summary>
+  <summary> Admin access </summary>
 
-```py
+```
 username: photometer
 password: admin
 ```
@@ -30,7 +30,7 @@ password: admin
 
  Online service where users can:
 
-- creare recipes;
+- create recipes;
 - follow other users and view their recipes;
 - like recipes and add them to list of favorite recipes;
 - add recipes to shopping list and download it in txt-format.
@@ -40,19 +40,19 @@ password: admin
 
 - Clone repository to the local computer:
 
-```py
-https://github.com/photometer/foodgram-project-react/
+```bash
+git clone https://github.com/photometer/foodgram-project-react/
 ```
 
 - Сollect containers from `infra`:
 
-```py
+```bash
 docker-compose up -d
 ```
 
 - In **backend** container:
 
-```py
+```bash
 docker-compose exec backend python manage.py migrate
 docker-compose exec backend python manage.py collectstatic
 docker-compose exec backend python manage.py createsuperuser
@@ -63,4 +63,8 @@ docker-compose exec backend python manage.py load_ingredients
 
 ## Backend author
 
-[Androsova Elizaveta](https://github.com/photometer)  
+[Androsova Elizaveta](https://github.com/photometer)
+
+## Frontend author
+Yandex.Practicum
+
